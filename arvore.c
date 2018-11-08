@@ -12,6 +12,8 @@ void mostrar(struct No **arvore);
 int min(struct No **arvore);
 int max(struct No **arvore);
 
+void testeBusca(struct No **arvore);
+
 int main(int argc, char *argv[]){
     struct No *arvore = NULL;
 
@@ -23,6 +25,8 @@ int main(int argc, char *argv[]){
     
     printf("Menor: %d\n", min(&arvore));
     printf("Maior: %d\n", max(&arvore));
+
+    testeBusca(&arvore);
 
     return 0;
 }
@@ -69,4 +73,28 @@ int max(struct No **arvore){
     }else{
         min(&((*arvore)->direita));
     }
+}
+
+void testeBusca(struct No **arvore){
+    if(*arvore == NULL){
+        return;
+    }else{
+        if((*arvore)->esquerda != NULL){
+            if((*arvore)->esquerda->valor > (*arvore)->valor){
+                printf("Deu merda\n");
+                return;
+            }
+        }
+
+        if((*arvore)->direita != NULL){
+            if((*arvore)->direita->valor <= (*arvore)->valor){
+                printf("Deu merda");
+                return;
+            }
+        }
+
+        testeBusca(&((*arvore)->esquerda));
+        testeBusca(&((*arvore)->direita));
+    }
+    printf("Essa arvore e de Deus!!!\n");
 }
