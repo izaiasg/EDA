@@ -9,6 +9,8 @@ struct No {
 
 void inserir(struct No **arvore, int numero);
 void mostrar(struct No **arvore);
+int min(struct No **arvore);
+int max(struct No **arvore);
 
 int main(int argc, char *argv[]){
     struct No *arvore = NULL;
@@ -18,6 +20,9 @@ int main(int argc, char *argv[]){
     inserir(&arvore, 2);
 
     mostrar(&arvore);
+    
+    printf("Menor: %d\n", min(&arvore));
+    printf("Maior: %d\n", max(&arvore));
 
     return 0;
 }
@@ -47,5 +52,21 @@ void mostrar(struct No **arvore){
 
         mostrar(&((*arvore)->direita));
         mostrar(&((*arvore)->esquerda));
+    }
+}
+
+int min(struct No **arvore){
+    if((*arvore)->esquerda == NULL){
+        return (*arvore)->valor;
+    }else{
+        min(&((*arvore)->esquerda));
+    }
+}
+
+int max(struct No **arvore){
+    if((*arvore)->direita == NULL){
+        return (*arvore)->valor;
+    }else{
+        min(&((*arvore)->direita));
     }
 }
