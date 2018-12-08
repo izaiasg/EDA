@@ -4,8 +4,8 @@ UPE - CARUARU - EDA
 IZAIAS GONÇALVES
 
 
-	agenda simplesmente encadeada para criar uma agenda telefonica. 
-    Inserindo já de uma forma ordenada (Alfabeticamente).
+	Agenda simplesmente encadeada para criar uma agenda telefonica. 
+	Inserindo já de uma forma ordenada (Alfabeticamente).
 
 
 		# Será passado um arquivo onde:
@@ -21,11 +21,13 @@ IZAIAS GONÇALVES
 
 	F adriano 123    | adriano 123, izaias 456, rick 789  // 3º comando Contato caso o (P)
 	A izaias 456     | adriano 123, rick 789    // 5º comando (P) que imprime apenas o 20 pois o 1 foi removido
-    A erick 789      | 
+        A erick 789      | erick 789, Contato nao cadastrado na agenda!  // 7 e 8 comandos busca
 	P                |     
 	R izaias         | 
 	P                |
-    B //Criar a opcao de buscar pelo nome
+	B erick          | 
+	B maria          |
+	
 
 
 ***************************************************************************************************************/
