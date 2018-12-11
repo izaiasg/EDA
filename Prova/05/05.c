@@ -5,6 +5,7 @@
 
 struct No{
 	int valor ;
+    int numeroVizinhos;
 	struct No *prox;
 };
 
@@ -14,10 +15,17 @@ void inserir(int numero, struct No **fila);
 void snapshot(struct No grafo[n]);
 void printar(struct No **fila);
 
+//Busca em largura 
+//Busca em profundidade
+
 int main(int argc, char const *argv[]){
 	
 	struct No grafo[n];
+    grafo->numeroVizinhos = 0;
 	init(grafo);
+
+    int visitado[n];
+
 
 	inserirLigacao(1,2,grafo);
     inserirLigacao(1,3,grafo);
@@ -71,6 +79,7 @@ void init(struct No grafo[n]){
 }
 
 void inserirLigacao(int vertice1, int vertice2, struct No grafo[n]){
+
 	inserir(vertice2, &(grafo[vertice1].prox));
 
 }
@@ -82,7 +91,9 @@ void inserir(int numero, struct No **fila){
 		struct No *tmp = malloc(sizeof(struct No));
 		tmp->valor = numero;
 		tmp->prox = NULL;
+        grafo->numeroVizinhos += 1;
 		(*fila) = tmp;
+
 	}else{
 		inserir(numero, &((*fila)->prox));
 	}
@@ -110,4 +121,50 @@ void printar(struct No **fila){
 		}	
 	}	
 }
+
+//Busca em largura (Fila)
+
+void buscaLargura_Grafo(struct No grafo[n], int verticeInicial, int *visitado){
+    int i, vertice, cont = 1;
+    int *fila, inicioFila = 0, finalFila = 0;
+
+    /* Marcar todos os vertices como não visitados. */
+    for(i=0; i < n; i++)
+        visitado[i] = 0;
+
+    /* 
+    * Cria fila para guardar a ordem de visitacao dos vertices. 
+    * e insere "verticeInicial" nela.
+    *  */
+    fila = (int*) malloc(n * sizeof(int));
+    finalFila++;
+    fila[finalFila] = verticeInicial;
+    visitado[verticeInicial] = cont;
+
+    /*
+    * Enquanto a fila nao estiver vazia. Recupera o vertice que está no inicio da fila.
+    * */
+    while(inicioFila != finalFila){
+        inicioFila = (inicioFila + 1) % n;
+        vertice = fila[inicioFila];
+        cont++;
+
+        /*
+        * Visitar todos os vizinhos daquele vertice
+        * */
+        for(i=0; i<grafo->grau[vertice]; i++){
+            if(!visitado[grafo->arestas[vertice][i]]){
+                finalFila = (finalFila + 1) % NV;
+                fila[finalFila] = grafo->arestas[vertice][i];
+                visitado[grafo->arestas[vertice][i]] = cont;
+            }
+        }
+    }
+    free(fila);
+    for(i=0; i < gr->nro_vertices; i++)
+        printf("%d -> %d\n",i,visitado[i]);
+}
+
+
+//Busca em profundidade (Pilha)
 
