@@ -1,7 +1,6 @@
 /***************************************************************************************************************
 
 UPE - CARUARU - EDA
-IZAIAS GONÇALVES
 
 
 	Agenda simplesmente encadeada para criar uma agenda telefonica. 
