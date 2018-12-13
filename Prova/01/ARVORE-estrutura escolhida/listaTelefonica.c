@@ -153,49 +153,6 @@ void mostrar(struct No **arvore){
 
 }
 
-/*No *min(struct No **arvore){
-	if(((*arvore)->esquerda) == NULL){
-	return (*arvore)->valor;
-	}else{
-		min(&((*arvore)->esquerda));
-	}
-}
-
-No *max(struct No **arvore){
-	if((*arvore)->direita == NULL){
-		return (*arvore)->valor;
-	}else{
-		max(&((*arvore)->direita));
-	}
-}
-*/
-
-/*void testeBusca(struct No **arvore){
-	if(*arvore == NULL){
-		return;
-	}else{
-		if((*arvore)->esquerda != NULL){
-			if(((*arvore)->esquerda)->valor > (*arvore)->valor) {
-				printf("Deu merda\n");
-				return;
-
-			}
-			}
-			if((*arvore)->direita != NULL){
-			if(((*arvore)->direita)->valor <= (*arvore)->valor) {
-				printf("Deu erro\n");
-				return;
-			}
-		}
-		testeBusca(&((*arvore)->esquerda));
-		testeBusca(&((*arvore)->direita));
-
-		printf("Essa arvore ta de boa\n");
-
-
-	
-}
-}*/
 
 struct No *MaiorDireita(struct No **arvore){
     if((*arvore)->direita != NULL) 
@@ -280,17 +237,3 @@ void excluir(struct No **arvore, char *nomeContato){
 			}
 		}
 }
-
-	
-
-
-
-
-
-	
-
-	
-		
-
-
-
